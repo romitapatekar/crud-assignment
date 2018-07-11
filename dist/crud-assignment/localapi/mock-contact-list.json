@@ -1,0 +1,8 @@
+{
+    "contactList" : [
+        {"id":"1", "firstName": "john", "lastName": "Doe", "email": "johndoe@gmail.com", "phoneNumber": 9623818555, "status": true},
+        {"id":"2", "firstName": "Mary", "lastName": "pas", "email": "marry@gmail.com", "phoneNumber": 9623818555, "status": true},
+        {"id":"3", "firstName": "mark", "lastName": "vissley", "email": "markvissley@gmail.com", "phoneNumber": 9623818555, "status": false},
+        {"id":"4", "firstName": "jack", "lastName": "dooley", "email": "jack@gmail.com", "phoneNumber": 9623818555, "status": false}
+      ]
+}

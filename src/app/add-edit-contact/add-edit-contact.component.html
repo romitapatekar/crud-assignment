@@ -1,0 +1,71 @@
+<div class="container">
+    <h2 *ngIf="mode==='add'">Add Contact</h2>
+    <h2 *ngIf="mode==='edit'">Edit Contact</h2>
+    <hr/>
+    <form class="contact-form" #contactForm="ngForm">
+        <input type="hidden" class="form-control" id="id" [(ngModel)]="contactDetails.id" name="id">
+        <div class="form-group">
+          <label for="name">First Name</label><span class="text-danger"> (Required)</span>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="contactDetails.fname" name="fname" 
+          required pattern="^[a-zA-Z]*" #fname="ngModel">
+            <div *ngIf="fname.errors && (fname.dirty || fname.touched)" class="alert alert-danger">
+                <div [hidden]="!fname.errors.required">
+                    First name is required!
+                </div>   
+                <div [hidden]="!fname.errors.pattern">
+                    Please enter valid First Name!
+                </div>                           
+            </div>
+        </div>
+   
+        <div class="form-group">
+            <label for="name">Last Name</label><span class="text-danger"> (Required)</span>
+            <input type="text" class="form-control" id="lName" [(ngModel)]="contactDetails.lName" name="lName"
+            required pattern="^[a-zA-Z]*"  #lName="ngModel">
+            <div *ngIf="lName.errors && (lName.dirty || lName.touched)" class="alert alert-danger">
+                <div [hidden]="!lName.errors.required">
+                    Last name is required!
+                </div>   
+                <div [hidden]="!lName.errors.pattern">
+                    Please enter valid Last Name!
+                </div>                           
+            </div>            
+        </div>
+
+        <div class="form-group">
+            <label for="name">Email : </label><span class="text-danger"> (Required)</span>
+            <input type="text" class="form-control" id="emailAddress" [(ngModel)]="contactDetails.emailAddress" name="emailAddress"
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  #emailAddress="ngModel">
+            <div *ngIf="emailAddress.errors && (emailAddress.dirty || emailAddress.touched)" class="alert alert-danger">
+                <div [hidden]="!emailAddress.errors.required">
+                    Email is required!
+                </div>   
+                <div [hidden]="!emailAddress.errors.pattern">
+                    Please enter valid email address!
+                </div>                           
+            </div>            
+        </div>
+
+        <div class="form-group">
+            <label for="name">Phone Number</label><span class="text-danger"> (Required)</span>
+            <input type="text" class="form-control" id="phone" [(ngModel)]="contactDetails.phone" name="phone"
+            required pattern="[789][0-9]{9}" #phone="ngModel">
+            <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger">
+                <div [hidden]="!phone.errors.required">
+                     Phone Number is required!
+                </div>   
+                <div [hidden]="!phone.errors.pattern">
+                    Please enter valid Phone Number!
+                </div>                           
+            </div>            
+        </div>
+
+        <div class="checkbox">
+           <label><input type="checkbox" id="statusEnabled" [(ngModel)]="contactDetails.statusEnabled" name="statusEnabled">Status : Active/Inactive</label>
+        </div>        
+        <hr/>
+        <button *ngIf="mode==='add'" type="button" class="btn btn-success" (click)="onSave(contactDetails)" [disabled]="!contactForm.form.valid">Save</button> 
+        <button *ngIf="mode==='edit'" type="button" class="btn btn-success" (click)="onEdit(contactDetails)" [disabled]="!contactForm.form.valid">Edit</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-default" (click)="cancelAddEdit()">Cancel</button>
+    </form>
+</div>    
